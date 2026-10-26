@@ -29,7 +29,17 @@ ESP32 ─────────────► ThingsBoard      réponses   : 
 - S'abonne aux requêtes RPC et répond à `setState` / `getState` (interrupteur) et `setValue` / `getValue` (bouton rotatif) : la **LED intégrée (GPIO 2)** s'allume ou s'éteint depuis le tableau de bord.
 - Le **jeton d'accès** de l'appareil (`TB_TOKEN`) est à remplacer par le vôtre.
 
-## Importer la chaîne d'alarme
+## Exports du Raspberry Pi
 
-ThingsBoard → **Chaînes de règles** → **+** → **Importer une chaîne de règles** → choisir le fichier JSON.
-Ce fichier est un exemple de la documentation ThingsBoard ; ses scripts JavaScript ont été convertis en **TBEL** lors de l'import.
+| Fichier | Contenu |
+|---|---|
+| [tableaux-de-bord/ccnb-laboratoire-3.json](tableaux-de-bord/ccnb-laboratoire-3.json) | Tableau de bord du campus : hiérarchie d'entités, jauges, thermomètre, graphique, interrupteur et bouton rotatif (RPC). |
+| [tableaux-de-bord/station-dht22.json](tableaux-de-bord/station-dht22.json) | Tableau de bord de la station ESP32 + DHT22 : jauges de température et d'humidité, historique de la dernière heure. |
+| [chaines-de-regles/flux-generation-telemetrie.json](chaines-de-regles/flux-generation-telemetrie.json) | 5 générateurs de télémétrie (locaux N376, N377, N388) et un nœud de **calcul de delta**. |
+| [chaines-de-regles/root-rule-chain.json](chaines-de-regles/root-rule-chain.json) | Chaîne racine : enregistrement de la télémétrie et des attributs, appels RPC, envoi vers la chaîne d'alarme. |
+| [chaines-de-regles/creer-effacer-alarme-courriel.json](chaines-de-regles/creer-effacer-alarme-courriel.json) | Création/effacement d'alarme et envoi de courriel (exemple de la documentation ThingsBoard ; scripts convertis en **TBEL**). |
+
+## Importer ces fichiers
+
+- **Tableau de bord** : ThingsBoard → **Tableaux de bord** → **+** → **Importer un tableau de bord** → choisir le fichier JSON. Ensuite, dans **Alias d'entités**, sélectionnez vos propres appareils.
+- **Chaîne de règles** : ThingsBoard → **Chaînes de règles** → **+** → **Importer une chaîne de règles** → choisir le fichier JSON → **Appliquer**. Pour les nœuds qui pointent vers une autre chaîne ou vers un appareil, choisissez les vôtres.

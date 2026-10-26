@@ -1,0 +1,209 @@
+{
+  "ruleChain": {
+    "name": "Flux Travail-Generation de donnees telemetrie",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null,
+    "additionalInfo": {
+      "description": ""
+    }
+  },
+  "metadata": {
+    "version": 3,
+    "firstNodeIndex": null,
+    "nodes": [
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Generator-Temperature N377",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 2,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "scriptLang": "TBEL",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "tbelScript": "var t = 20;\nif (prevMsg != null && prevMsg.temperature != null) {\n    t = prevMsg.temperature + 1;\n}\nif (t > 30) {\n    t = 20;\n}\nvar msg = { temperature: t };\nvar metadata = {};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "5b27b890-c981-11f1-9a57-33181d48fe9c",
+          "originatorType": "DEVICE"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 334,
+          "layoutY": 165
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Generator-Humidity N377",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 2,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "scriptLang": "TBEL",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "tbelScript": "var h = 40;\nif (prevMsg != null && prevMsg.humidity != null) {\n    h = prevMsg.humidity + 2;\n}\nif (h > 60) {\n    h = 40;\n}\nvar msg = { humidity: h };\nvar metadata = {};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "6e47a7f0-c981-11f1-9a57-33181d48fe9c",
+          "originatorType": "DEVICE"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 499,
+          "layoutY": 245
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Generator-Temperature N376",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 2,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "scriptLang": "TBEL",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "tbelScript": "var t = 20;\nif (prevMsg != null && prevMsg.temperature != null) {\n    t = prevMsg.temperature + 1;\n}\nif (t > 30) {\n    t = 20;\n}\nvar msg = { temperature: t };\nvar metadata = {};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "3162f8d0-c981-11f1-9a57-33181d48fe9c",
+          "originatorType": "DEVICE"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 502,
+          "layoutY": 331
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Generator-Humidity N376",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 2,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "scriptLang": "TBEL",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "tbelScript": "var h = 40;\nif (prevMsg != null && prevMsg.humidity != null) {\n    h = prevMsg.humidity + 2;\n}\nif (h > 60) {\n    h = 40;\n}\nvar msg = { humidity: h };\nvar metadata = {};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "4a578590-c981-11f1-9a57-33181d48fe9c",
+          "originatorType": "DEVICE"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 495,
+          "layoutY": 424
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Generator-Temperature N388",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 2,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "scriptLang": "TBEL",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "tbelScript": "var t = 20;\nif (prevMsg != null && prevMsg.temperature != null) {\n    t = prevMsg.temperature + 1;\n}\nif (t > 30) {\n    t = 20;\n}\nvar msg = { temperature: t };\nvar metadata = {};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "80249000-c981-11f1-9a57-33181d48fe9c",
+          "originatorType": "DEVICE"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 492,
+          "layoutY": 523
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.flow.TbRuleChainInputNode",
+        "name": "Connexion Rule Root Chaine",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 1,
+        "configuration": {
+          "forwardMsgToDefaultRuleChain": false,
+          "ruleChainId": "5460e860-c7d3-11f1-9bef-7fa07e96b8d0"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 911,
+          "layoutY": 126
+        },
+        "externalId": null
+      },
+      {
+        "type": "org.thingsboard.rule.engine.metadata.CalculateDeltaNode",
+        "name": "calcul delta",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 1,
+        "configuration": {
+          "inputValueKey": "temperature",
+          "outputValueKey": "delta",
+          "useCache": true,
+          "addPeriodBetweenMsgs": false,
+          "periodValueKey": "periodInMs",
+          "round": null,
+          "tellFailureIfDeltaIsNegative": true,
+          "excludeZeroDeltas": false
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 602,
+          "layoutY": 144
+        },
+        "externalId": null
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 6,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 5,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
