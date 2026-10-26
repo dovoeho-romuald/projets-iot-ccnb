@@ -1,0 +1,10 @@
+// Nœud « Générateur » (ThingsBoard, langage TBEL)
+// Simule une température qui monte de 1 °C à chaque message, de 20 à 30 °C, puis recommence.
+// prevMsg = message précédent produit par ce même générateur.
+var t = 20;
+if (prevMsg != null && prevMsg.temperature != null) { t = prevMsg.temperature + 1; }
+if (t > 30) { t = 20; }
+var msg = { temperature: t };
+var metadata = {};
+var msgType = "POST_TELEMETRY_REQUEST";
+return { msg: msg, metadata: metadata, msgType: msgType };

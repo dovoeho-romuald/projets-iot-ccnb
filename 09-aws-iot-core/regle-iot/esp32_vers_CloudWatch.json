@@ -1,0 +1,26 @@
+{
+  "ruleName": "esp32_vers_CloudWatch",
+  "description": "Envoie la température et l'humidité de l'ESP32 vers CloudWatch",
+  "sql": "SELECT temperature, humidity FROM 'esp32/pub'",
+  "awsIotSqlVersion": "2016-03-23",
+  "actions": [
+    {
+      "cloudwatchMetric": {
+        "metricNamespace": "ESP32",
+        "metricName": "temperature",
+        "metricUnit": "None",
+        "metricValue": "${temperature}",
+        "roleArn": "arn:aws:iam::<ID_DU_COMPTE>:role/service-role/IoT_CloudWatch_Role"
+      }
+    },
+    {
+      "cloudwatchMetric": {
+        "metricNamespace": "ESP32",
+        "metricName": "Humidity",
+        "metricUnit": "Percent",
+        "metricValue": "${humidity}",
+        "roleArn": "arn:aws:iam::<ID_DU_COMPTE>:role/service-role/IoT_CloudWatch_Role"
+      }
+    }
+  ]
+}

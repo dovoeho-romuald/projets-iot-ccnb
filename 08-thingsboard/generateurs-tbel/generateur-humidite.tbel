@@ -1,0 +1,9 @@
+// Nœud « Générateur » (ThingsBoard, langage TBEL)
+// Simule une humidité qui monte de 2 % à chaque message, de 40 à 60 %, puis recommence.
+var h = 40;
+if (prevMsg != null && prevMsg.humidity != null) { h = prevMsg.humidity + 2; }
+if (h > 60) { h = 40; }
+var msg = { humidity: h };
+var metadata = {};
+var msgType = "POST_TELEMETRY_REQUEST";
+return { msg: msg, metadata: metadata, msgType: msgType };

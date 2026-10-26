@@ -1,0 +1,33 @@
+{
+  "widgets": [
+    {
+      "type": "metric", "x": 0, "y": 0, "width": 6, "height": 6,
+      "properties": {
+        "title": "Température (°C)", "view": "gauge", "region": "us-east-2",
+        "metrics": [["ESP32", "temperature"]],
+        "stat": "Average", "period": 60, "liveData": true,
+        "yAxis": {"left": {"min": 0, "max": 50}}
+      }
+    },
+    {
+      "type": "metric", "x": 6, "y": 0, "width": 6, "height": 6,
+      "properties": {
+        "title": "Humidité (%)", "view": "gauge", "region": "us-east-2",
+        "metrics": [["ESP32", "Humidity"]],
+        "stat": "Average", "period": 60, "liveData": true,
+        "yAxis": {"left": {"min": 0, "max": 100}}
+      }
+    },
+    {
+      "type": "metric", "x": 12, "y": 0, "width": 12, "height": 6,
+      "properties": {
+        "title": "Historique", "view": "timeSeries", "region": "us-east-2",
+        "metrics": [
+          ["ESP32", "temperature", {"label": "Température (°C)"}],
+          ["ESP32", "Humidity", {"label": "Humidité (%)", "yAxis": "right"}]
+        ],
+        "stat": "Average", "period": 60, "liveData": true
+      }
+    }
+  ]
+}

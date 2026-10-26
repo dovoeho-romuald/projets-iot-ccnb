@@ -1,0 +1,3 @@
+// Examen-MQTT.ino
+#define SECRET_SSID "VOTRE_WIFI"
+#define SECRET_PASS "VOTRE_MOT_DE_PASSE"

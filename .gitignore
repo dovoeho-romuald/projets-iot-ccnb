@@ -1,0 +1,8 @@
+.pio/
+.vscode/
+node_modules/
+*.pem
+*.pem.crt
+*.pem.key
+*.key
+arduino_secrets.local.h

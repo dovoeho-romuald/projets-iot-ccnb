@@ -1,0 +1,239 @@
+[
+    {
+        "id": "e42c0d93a6d5ec06",
+        "type": "mqtt in",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "mqtt_in",
+        "topic": "RFID/data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8c6766f13424d44e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "e85bedafe32db9c5",
+                "82ebc7778e1ad845"
+            ]
+        ]
+    },
+    {
+        "id": "4cbff2ea311e6264",
+        "type": "debug",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "after_verification",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "82ebc7778e1ad845",
+        "type": "function",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "verification_acces",
+        "func": "var rfid_address = msg.payload;\n\nif(rfid_address == \"198426b9\" || rfid_address == \"3c162d31\" || rfid_address == \"37889e5f\")\n{\n    msg.payload = \"ACCESS GRANTED\";\n}\nelse\n{\n    msg.payload = \"ACCESS DENIED\";\n    msg.rfid_address = rfid_address;\n}\n\nlet newPayload = msg.payload; // Fetch Payload\n\nmsg.payload = [rfid_address, newPayload];\nmsg.topic = \"INSERT INTO register_address (card_id, acces) VALUES (?, ?)\"; // SQL Query\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "4cbff2ea311e6264",
+                "71dd446409428d1f",
+                "f20cd7ef9a4c91c0"
+            ]
+        ]
+    },
+    {
+        "id": "e85bedafe32db9c5",
+        "type": "debug",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "mqtt_in",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8bb47b709a2bc088",
+        "type": "mqtt out",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "",
+        "topic": "RFID/data/receive",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8c6766f13424d44e",
+        "x": 1070,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "71dd446409428d1f",
+        "type": "debug",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "rfid_address",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f20cd7ef9a4c91c0",
+        "type": "mysql",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "mydb": "2dac3c5b0ae70bd6",
+        "name": "requesting",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "e19ba0c450fa7f2b",
+                "cfe5fb8d3662553b"
+            ]
+        ]
+    },
+    {
+        "id": "e19ba0c450fa7f2b",
+        "type": "debug",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "cfe5fb8d3662553b",
+        "type": "function",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "name": "function 25",
+        "func": "msg.topic = `SELECT card_id, acces FROM register_address`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "6e50d154d93daed7"
+            ]
+        ]
+    },
+    {
+        "id": "6e50d154d93daed7",
+        "type": "mysql",
+        "z": "9a5b3ba43038fbb2",
+        "d": true,
+        "mydb": "2dac3c5b0ae70bd6",
+        "name": "requesting",
+        "x": 870,
+        "y": 180,
+        "wires": [
+            [
+                "8bb47b709a2bc088"
+            ]
+        ]
+    },
+    {
+        "id": "8c6766f13424d44e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2dac3c5b0ae70bd6",
+        "type": "MySQLdatabase",
+        "name": "rfid",
+        "host": "localhost",
+        "port": "3306",
+        "db": "rfid",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "1ad4edeb5b85f465",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-mysql": "3.0.3"
+        }
+    }
+]
